@@ -17,7 +17,7 @@ endif
 syn match tagTodo "@\S\+" 
 syn match projectTodo "+\S\+"
 syn match prioTodo "(\S)"
-syn match doneTodo "x\s.*$"
+syn match doneTodo "^x\s.*$"
 
 " Highlight
 let b:current_syntax = "todotxt"
