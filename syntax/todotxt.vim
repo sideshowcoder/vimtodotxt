@@ -1,11 +1,11 @@
 " Vim syntax file
 " Language:	TodoTxt
-" Maintainer:	Philipp Fehre <philipp.fehre@googlemail.com>
+" Maintainer:	Philipp Fehre <philipp.fehre@gmail.com>
 " URL: https://github.com/sideshowcoder/vimtodotxt
 " Version:	1
-" Last Change:  2011 Nov 9 
-" Remark:	http://todotxt.com/ is a command line todo manager originally started by Gina Trapani http://ginatrapani.org/. All todos are managed via a simple structured textfile, todo.txt. 
-" Remark: This is a port of the Textmate TodoTXT bundle https://github.com/sideshowcoder/tmTodoTXT
+" Last Change:  2013-12-30
+" Description: Extend vim to handle todo.txt files as described on http://todotxt.com
+" License:     BSD
 
 if version < 600
   syntax clear
@@ -14,7 +14,7 @@ elseif exists("b:current_syntax")
 endif
 
 " Define syntax matches
-syn match tagTodo "@\S\+" 
+syn match tagTodo "@\S\+"
 syn match projectTodo "+\S\+"
 syn match prioTodo "(\S)"
 syn match doneTodo "^x\s.*$"
