@@ -8,10 +8,15 @@ Introduction
 
 Installation
 ------------
-Check out the mode from Github and move to the .vim directory or the directory managed by pathogen to autoload modes
+If you don't have a preferred installation method, I recommend installing [pathogen.vim](https://github.com/tpope/vim-pathogen), and then simply copy and paste:
 
-  $ git clone https://github.com/sideshowcoder/vimtodotxt ~/Desktop/todotxt
-  $ mv ~/Desktop/todotxt/\* ~/.vim/
+    cd ~/.vim/bundle
+    git clone git://github.com/tpope/vim-fugitive.git
+
+If you don't want to use Pathogen check out the mode from Github and move to the .vim directory
+
+    $ git clone https://github.com/sideshowcoder/vimtodotxt ~/Desktop/todotxt
+    $ mv ~/Desktop/todotxt/\* ~/.vim/
 
 
 License (BSD) 
