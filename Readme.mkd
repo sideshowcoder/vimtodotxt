@@ -3,7 +3,8 @@ TodoTXT mode for Vim
 
 Introduction
 ------------
-[Todotxt](http://todotxt.com/) is a command line todo manager originally started by [Gina Trapani](http://ginatrapani.org/). All todos are managed via a simple structured textfile, todo.txt. The mode is a port from the [Textmate TodoTXT bundle](https://github.com/sideshowcoder/tmTodoTXT)
+[Todotxt](http://todotxt.com/) is a command line todo manager originally started by [Gina Trapani](http://ginatrapani.org/). All todos are managed via a simple structured textfile, todo.txt. This mode extends vim to handle todo.txt, done.txt and report.txt files.
+
 
 Installation
 ------------
