@@ -2,69 +2,39 @@
 " Description: Extend vim to handle todo.txt files as described on http://todotxt.com
 " Maintainer:  Philipp Fehre <philipp.fehre@gmail.com>
 " Version:     1
-" Last Change: 2013-12-30
-" License:     BSD
+" Last Change: 2014-01-17
+" License:     MIT
 
 if exists("g:loaded_todotxt_plugin")
   finish
 endif
 let g:loaded_todotxt_plugin = 1
 
-let s:active= 0
-
-" save off values for later
-let s:save_textwidth = ""
-if exists("&textwidth")
-  let s:save_textwidth = &textwidth
+" custom todotxt
+if !exists('g:todotxt_config')
+  let g:todotxt_config = '$HOME/.todo/config'
 end
 
-let s:save_wrapmargin = ""
-if exists("&wrapmargin")
-  let s:save_wrapmargin = &wrapmargin
+if !exists('g:todotxt_executable')
+  let g:todotxt_executable = 'todo.sh'
 end
 
-let s:save_wrap = ""
-if exists("&wrap")
-  let s:save_wrap = &wrap
-end
-
-function! <SID>TodotxtDeactivate()
-  if s:active == 1
-    let s:active = 0
-    " restore values
-    if s:save_textwidth != ""
-      exec("set textwidth=" . s:save_textwidth)
-    endif
-    if s:save_wrapmargin != ""
-      exec("set wrapmargin=" . s:save_wrapmargin)
-    endif
-    if s:save_wrap != ""
-      if s:save_wrap == 1
-        exec("set wrap")
-      else
-        exec("set nowrap")
-      endif
-    endif
-  endif
+function! <SID>Archive()
+  execute '!'.g:todotxt_executable.' -d'.g:todotxt_config.' archive'
+  " reload the buffer
+  e
 endfunction
 
-function! <SID>TodotxtActivate()
-  if s:active == 0
-    let s:active = 1
-
-    " make sure no newlines are inserted automatically since the todo.txt format is
-    " one todo per line
-    set wrap
-    set textwidth=0 wrapmargin=0
-    set filetype=todotxt
-  endif
+function! <SID>Done()
+  execute '!'.g:todotxt_executable.' -d'.g:todotxt_config.' do '.line('.')
+  " reload the buffer
+  e
 endfunction
 
-noremap <silent> <Plug>TodotxtDeactivate :call <SID>TodotxtDeactivate()<CR>
-" Create a `TodotxtDeactivate` command:
-command -nargs=0 TodotxtDeactivate call <SID>TodotxtDeactivate()
+noremap <silent> <Plug>TodoArchive :call <SID>Archive()<CR>
+" Create a `TodoArchive` command
+command -nargs=0 TodoArchive call <SID>Archive()
 
-" toggle plugin
-au! BufRead,BufNewFile todo.txt   :call <SID>TodotxtActivate()
-au! BufRead,BufNewFile done.txt   :call <SID>TodotxtActivate()
-au! BufRead,BufNewFile report.txt :call <SID>TodotxtActivate()
+noremap <silent> <Plug>TodoDone :call <SID>Done()<CR>
+" Create a `TodoDone` command
+command -nargs=0 TodoDone call <SID>Done()

@@ -1,11 +1,10 @@
-" Vim syntax file
-" Language:	TodoTxt
+" Language:	TodoTXT
 " Maintainer:	Philipp Fehre <philipp.fehre@gmail.com>
 " URL: https://github.com/sideshowcoder/vimtodotxt
-" Version:	1
-" Last Change:  2013-12-30
+" Version: 1
+" Last Change:  2014-01-17
 " Description: Extend vim to handle todo.txt files as described on http://todotxt.com
-" License:     BSD
+" License: MIT
 
 if version < 600
   syntax clear
