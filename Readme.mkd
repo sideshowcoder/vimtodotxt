@@ -2,18 +2,31 @@ TodoTXT mode for Vim
 =====================
 
 ## Introduction
-[Todotxt](http://todotxt.com/) is a command line todo manager originally started by [Gina Trapani](http://ginatrapani.org/). All todos are managed via a simple structured textfile, todo.txt. This mode extends vim to handle todo.txt, done.txt and report.txt files.
+[Todotxt](http://todotxt.com/) is a command line todo manager originally started
+by [Gina Trapani](http://ginatrapani.org/). All todos are managed via a simple
+structured textfile, todo.txt. This mode extends vim to handle todo.txt,
+done.txt and report.txt files.
 
 ## Installation
-If you don't have a preferred installation method, I recommend installing [pathogen.vim](https://github.com/tpope/vim-pathogen), and then simply copy and paste:
+If you don't have a preferred installation method, I recommend installing
+[pathogen.vim](https://github.com/tpope/vim-pathogen), and then simply copy and
+paste:
 
     cd ~/.vim/bundle
     git clone git://github.com/tpope/vim-fugitive.git
 
-If you don't want to use Pathogen check out the mode from Github and move to the .vim directory
+If you don't want to use Pathogen check out the mode from Github and move to the
+.vim directory
 
     $ git clone https://github.com/sideshowcoder/vimtodotxt ~/Desktop/todotxt
     $ mv ~/Desktop/todotxt/\* ~/.vim/
+
+To set the right filetype you need to specify it in you .vimrc since the
+extension .txt collides with normal text files. One way is to specify an
+autocommand on read and newfile to match the exact name todo.txt for example
+
+    au BufNewFile,BufRead todo.txt set filetype=todotxt
+
 
 ## Customizations
 |Variable             |Use                            |Default       |
